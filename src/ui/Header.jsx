@@ -37,8 +37,8 @@ export default function Header() {
     <header
       className={
         isMenuOpen
-          ? " bg-white/30 backdrop-blur-sm absolute z-999 w-full h-full "
-          : "w-full p-3.5 px-5 flex justify-between items-center flex-col md:flex-row"
+          ? " bg-white/30 backdrop-blur-sm w-full h-full fixed top-0 left-0 z-100 py-6 px-4"
+          : "w-full py-6 px-5 flex justify-between items-center flex-col md:flex-row"
       }>
       {/* Logo - Always visible */}
       <div className="w-full md:w-auto flex justify-between items-center">
@@ -52,7 +52,7 @@ export default function Header() {
       {/* Navigation and Search - Conditionally rendered based on screen size */}
       <div
         className={`
-        w-full md:w-[60%] md:justify-between 
+          md:justify-between 
         transition-all duration-300 ease-in-out 
         ${
           isMobile

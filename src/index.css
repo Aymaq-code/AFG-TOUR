@@ -12,16 +12,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
+  /* position: fixed;
   right: 20px;
   top: 20px;
-  z-index: 50;
+  z-index: 50; */
+  position: relative;
+  z-index: 1000;
+  overflow: hidden;
 }
 
 .menu-toggle span {
   display: block;
   height: 4px;
-  background: #333;
+  background: #fff;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -41,7 +44,7 @@
 
 /* Optional hover effect */
 .menu-toggle:hover span {
-  background: #007bff;
+  background: #8b8b8b;
 }
 
 @media screen and (min-width: 768px) {
