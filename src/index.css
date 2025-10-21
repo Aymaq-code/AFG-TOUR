@@ -1,0 +1,83 @@
+@import "tailwindcss";
+.navLink {
+  @apply hover:text-stone-300 hover:translate-y-1 transition-all duration-200 font-semibold text-[20px] tracking-[2px] uppercase;
+}
+/*==== MENU TOGGLE BTN ===*/
+
+.menu-toggle {
+  width: 35px;
+  height: 26px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 50;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* When open */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Optional hover effect */
+.menu-toggle:hover span {
+  background: #007bff;
+}
+
+@media screen and (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/*==== HOME BG IMAGE ===*/
+.appLayout {
+  height: 100vh;
+  background-image: linear-gradient(
+      180deg,
+      rgba(11, 17, 211, 0.76),
+      rgba(0, 0, 0, 0.34),
+      rgba(0, 0, 0, 0.25)
+    ),
+    url("../public/afg_img/BIN/BIN-7.jpg");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* optional: gives a parallax effect on large screens */
+}
+
+/* .home {
+  position: relative;
+  z-index: 1;
+}
+.home::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #0000002d, #00000052);
+  z-index: 100;
+} */
