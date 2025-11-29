@@ -1,9 +1,15 @@
 @import "tailwindcss";
-.navLink {
-  @apply hover:text-stone-300 hover:translate-y-1 transition-all duration-200 font-semibold text-[20px] tracking-[2px] uppercase;
-}
-/*==== MENU TOGGLE BTN ===*/
 
+.navLink {
+  @apply hover:text-stone-300 hover:translate-y-1 transition-all duration-200 font-semibold text-[30px] md:text-[17px] tracking-[2px] uppercase;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/*==== MENU TOGGLE BTN ===*/
 .menu-toggle {
   width: 35px;
   height: 26px;
@@ -53,34 +59,584 @@
   }
 }
 
-/*==== HOME BG IMAGE ===*/
-.appLayout {
-  height: 100vh;
-  background-image: linear-gradient(
-      180deg,
-      rgba(11, 17, 211, 0.76),
-      rgba(0, 0, 0, 0.34),
-      rgba(0, 0, 0, 0.25)
-    ),
-    url("../public/afg_img/BIN/BIN-7.jpg");
+.aboutImg1 {
+  position: relative;
+  border-radius: 10px;
+  transform: translateX(-2rem) translateY(-2rem);
+  animation: aboutImg1 1s ease both;
+  animation-timeline: view();
+  animation-range: cover(60%);
+  background-image: linear-gradient(180deg, #6fc23cdf, #78dd3063),
+    url("../public/app_images/pexels-tiger-lily-7108452.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 250px;
+}
 
+.aboutImg2 {
+  position: absolute;
+  border-radius: 10px;
+  transform: translateX(2rem) translateY(-1rem);
+  animation: aboutImg2 1s ease both;
+  animation-timeline: view();
+  animation-range: cover(60%);
+}
+
+/* Small phones (default) */
+@keyframes aboutImg1 {
+  to {
+    transform: translateX(-0.5rem) translateY(-1rem);
+  }
+}
+
+@keyframes aboutImg2 {
+  to {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .aboutImg1 {
+    transform: translateX(-5rem) translateY(-3rem);
+    height: 300px;
+  }
+
+  .aboutImg2 {
+    transform: translateX(3rem) translateY(-2rem);
+  }
+
+  @keyframes aboutImg1 {
+    to {
+      transform: translateX(-1rem) translateY(-2rem);
+    }
+  }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  .aboutImg1 {
+    transform: translateX(-10rem) translateY(-6rem);
+    height: 400px;
+  }
+
+  .aboutImg2 {
+    transform: translateX(7rem) translateY(-5rem);
+  }
+
+  @keyframes aboutImg1 {
+    to {
+      transform: translateX(-2rem) translateY(-4rem);
+    }
+  }
+}
+
+.home {
+  background: linear-gradient(180deg, #0000002d, #00000052),
+    url("../public/afg_img/BIN/BIN-7.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* optional: gives a parallax effect on large screens */
+  height: 100vh;
 }
 
-/* .home {
-  position: relative;
-  z-index: 1;
+.home__h1 {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
 }
-.home::before {
+
+/*=== FOOTER BORDER RADIUS ===*/
+
+.appLayout {
+  background-image: radial-gradient(
+      circle at 62% 39%,
+      rgba(30, 30, 30, 0.05) 0%,
+      rgba(30, 30, 30, 0.05) 8%,
+      transparent 8%,
+      transparent 16%,
+      transparent 16%,
+      transparent 28%,
+      transparent 28%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 19% 61%,
+      rgba(201, 201, 201, 0.01) 0%,
+      rgba(201, 201, 201, 0.01) 59%,
+      transparent 59%,
+      transparent 60%,
+      transparent 60%,
+      transparent 99%,
+      transparent 99%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 15% 5%,
+      rgba(186, 186, 186, 0.05) 0%,
+      rgba(186, 186, 186, 0.05) 9%,
+      transparent 9%,
+      transparent 79%,
+      transparent 79%,
+      transparent 92%,
+      transparent 92%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 64% 49%,
+      rgba(51, 51, 51, 0.08) 0%,
+      rgba(51, 51, 51, 0.08) 22%,
+      transparent 22%,
+      transparent 50%,
+      transparent 50%,
+      transparent 96%,
+      transparent 96%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 53% 21%,
+      rgba(0, 0, 0, 0.04) 0%,
+      rgba(0, 0, 0, 0.04) 21%,
+      transparent 21%,
+      transparent 80%,
+      transparent 80%,
+      transparent 89%,
+      transparent 89%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 14% 91%,
+      rgba(49, 49, 49, 0.04) 0%,
+      rgba(49, 49, 49, 0.04) 35%,
+      transparent 35%,
+      transparent 63%,
+      transparent 63%,
+      transparent 71%,
+      transparent 71%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 42% 78%,
+      rgba(64, 64, 64, 0.02) 0%,
+      rgba(64, 64, 64, 0.02) 56%,
+      transparent 56%,
+      transparent 75%,
+      transparent 75%,
+      transparent 80%,
+      transparent 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 76% 85%,
+      rgba(69, 69, 69, 0.06) 0%,
+      rgba(69, 69, 69, 0.06) 53%,
+      transparent 53%,
+      transparent 68%,
+      transparent 68%,
+      transparent 97%,
+      transparent 97%,
+      transparent 100%
+    ),
+    linear-gradient(90deg, rgb(143, 249, 177), rgb(62, 146, 80));
+}
+.tour {
+  background-image: radial-gradient(
+      circle at 37% 80%,
+      hsla(180, 0%, 7%, 0.1) 0%,
+      hsla(180, 0%, 7%, 0.1) 45%,
+      transparent 45%,
+      transparent 73%,
+      transparent 73%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 60% 45%,
+      hsla(180, 0%, 7%, 0.1) 0%,
+      hsla(180, 0%, 7%, 0.1) 67%,
+      transparent 67%,
+      transparent 71%,
+      transparent 71%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 23% 84%,
+      hsla(180, 0%, 7%, 0.1) 0%,
+      hsla(180, 0%, 7%, 0.1) 55%,
+      transparent 55%,
+      transparent 97%,
+      transparent 97%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 52% 76%,
+      hsla(180, 0%, 7%, 0.1) 0%,
+      hsla(180, 0%, 7%, 0.1) 37%,
+      transparent 37%,
+      transparent 95%,
+      transparent 95%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 50% 81%,
+      hsla(180, 0%, 7%, 0.1) 0%,
+      hsla(180, 0%, 7%, 0.1) 79%,
+      transparent 79%,
+      transparent 85%,
+      transparent 85%,
+      transparent 100%
+    ),
+    linear-gradient(45deg, rgb(31, 89, 11), rgb(104, 210, 51));
+}
+.tourFullDetails {
+  background-image: linear-gradient(
+      0deg,
+      rgba(53, 33, 168, 0.2) 0%,
+      rgba(53, 33, 168, 0.2) 14.286%,
+      rgba(59, 36, 175, 0.2) 14.286%,
+      rgba(59, 36, 175, 0.2) 28.572%,
+      rgba(66, 40, 181, 0.2) 28.572%,
+      rgba(66, 40, 181, 0.2) 42.858%,
+      rgba(46, 30, 162, 0.2) 42.858%,
+      rgba(46, 30, 162, 0.2) 57.144%,
+      rgba(79, 46, 194, 0.2) 57.144%,
+      rgba(79, 46, 194, 0.2) 71.43%,
+      rgba(72, 43, 187, 0.2) 71.43%,
+      rgba(72, 43, 187, 0.2) 85.716%,
+      rgba(85, 49, 200, 0.2) 85.716%,
+      rgba(85, 49, 200, 0.2) 100.002%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(53, 33, 168, 0.2) 0%,
+      rgba(53, 33, 168, 0.2) 14.286%,
+      rgba(59, 36, 175, 0.2) 14.286%,
+      rgba(59, 36, 175, 0.2) 28.572%,
+      rgba(66, 40, 181, 0.2) 28.572%,
+      rgba(66, 40, 181, 0.2) 42.858%,
+      rgba(46, 30, 162, 0.2) 42.858%,
+      rgba(46, 30, 162, 0.2) 57.144%,
+      rgba(79, 46, 194, 0.2) 57.144%,
+      rgba(79, 46, 194, 0.2) 71.43%,
+      rgba(72, 43, 187, 0.2) 71.43%,
+      rgba(72, 43, 187, 0.2) 85.716%,
+      rgba(85, 49, 200, 0.2) 85.716%,
+      rgba(85, 49, 200, 0.2) 100.002%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(53, 33, 168, 0.2) 0%,
+      rgba(53, 33, 168, 0.2) 14.286%,
+      rgba(59, 36, 175, 0.2) 14.286%,
+      rgba(59, 36, 175, 0.2) 28.572%,
+      rgba(66, 40, 181, 0.2) 28.572%,
+      rgba(66, 40, 181, 0.2) 42.858%,
+      rgba(46, 30, 162, 0.2) 42.858%,
+      rgba(46, 30, 162, 0.2) 57.144%,
+      rgba(79, 46, 194, 0.2) 57.144%,
+      rgba(79, 46, 194, 0.2) 71.43%,
+      rgba(72, 43, 187, 0.2) 71.43%,
+      rgba(72, 43, 187, 0.2) 85.716%,
+      rgba(85, 49, 200, 0.2) 85.716%,
+      rgba(85, 49, 200, 0.2) 100.002%
+    ),
+    linear-gradient(90deg, rgb(48, 28, 31), rgb(27, 200, 208));
+}
+.payment {
+  background-image: repeating-linear-gradient(
+      45deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      112.5deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      22.5deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      67.5deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      157.5deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      112.5deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      67.5deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      hsla(253, 0%, 98%, 0.03) 0px,
+      hsla(253, 0%, 98%, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    linear-gradient(90deg, rgb(104, 26, 199), rgb(197, 45, 137));
+}
+.footer {
+  background-image: radial-gradient(
+      circle at 46% 40%,
+      rgba(228, 228, 228, 0.06) 0%,
+      rgba(228, 228, 228, 0.06) 13%,
+      transparent 13%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 11% 41%,
+      rgba(198, 198, 198, 0.06) 0%,
+      rgba(198, 198, 198, 0.06) 19%,
+      transparent 19%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 52% 23%,
+      rgba(14, 14, 14, 0.06) 0%,
+      rgba(14, 14, 14, 0.06) 69%,
+      transparent 69%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 13% 85%,
+      rgba(148, 148, 148, 0.06) 0%,
+      rgba(148, 148, 148, 0.06) 44%,
+      transparent 44%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 57% 74%,
+      rgba(232, 232, 232, 0.06) 0%,
+      rgba(232, 232, 232, 0.06) 21%,
+      transparent 21%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 59% 54%,
+      rgba(39, 39, 39, 0.06) 0%,
+      rgba(39, 39, 39, 0.06) 49%,
+      transparent 49%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 98% 38%,
+      rgba(157, 157, 157, 0.06) 0%,
+      rgba(157, 157, 157, 0.06) 24%,
+      transparent 24%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 8% 6%,
+      rgba(60, 60, 60, 0.06) 0%,
+      rgba(60, 60, 60, 0.06) 12%,
+      transparent 12%,
+      transparent 100%
+    ),
+    linear-gradient(90deg, rgb(148, 220, 10), rgb(18, 123, 10));
+}
+
+.wpte-trip-highlights,
+.includes,
+.excludes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.wpte-trip-highlights li,
+.includes li,
+.excludes li {
+  position: relative;
+  padding-left: 1.8em; /* space for the icon */
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.wpte-trip-highlights li::before,
+.includes li::before,
+.excludes li::before {
   content: "";
   position: absolute;
+  top: 0.25em;
   left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, #0000002d, #00000052);
-  z-index: 100;
-} */
+  width: 1em;
+  height: 1em;
+  background-color: var(--wpte-icon-color, var(--primary-color, #ffffff));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_3423_5452)'%3E%3Cpath d='M18.3333 9.23818V10.0049C18.3323 11.8019 17.7504 13.5504 16.6745 14.9897C15.5985 16.429 14.0861 17.4819 12.3628 17.9914C10.6395 18.501 8.79772 18.4398 7.11206 17.817C5.42641 17.1942 3.98722 16.0433 3.00914 14.5357C2.03106 13.0282 1.5665 11.2449 1.68474 9.45178C1.80297 7.65866 2.49768 5.95179 3.66524 4.58575C4.8328 3.2197 6.41066 2.26767 8.1635 1.87164C9.91633 1.47561 11.7502 1.6568 13.3917 2.38818M18.3333 3.33341L10 11.6751L7.50001 9.17508' stroke='%230C68E9' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3423_5452'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  mask: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_3423_5452)'%3E%3Cpath d='M18.3333 9.23818V10.0049C18.3323 11.8019 17.7504 13.5504 16.6745 14.9897C15.5985 16.429 14.0861 17.4819 12.3628 17.9914C10.6395 18.501 8.79772 18.4398 7.11206 17.817C5.42641 17.1942 3.98722 16.0433 3.00914 14.5357C2.03106 13.0282 1.5665 11.2449 1.68474 9.45178C1.80297 7.65866 2.49768 5.95179 3.66524 4.58575C4.8328 3.2197 6.41066 2.26767 8.1635 1.87164C9.91633 1.47561 11.7502 1.6568 13.3917 2.38818M18.3333 3.33341L10 11.6751L7.50001 9.17508' stroke='%230C68E9' stroke-width='1.67' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3423_5452'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 1em 1em;
+  mask-size: 1em 1em;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.includes li::before {
+  background-color: var(--wpte-icon-color, var(--primary-color, #119a27));
+  background-color: #000000ca;
+}
+
+.excludes li::before {
+  background-color: var(--wpte-icon-color, var(--primary-color, #da1f1f));
+}
+
+/* Enhanced Dark Theme Styling for react-datepicker */
+.custom-calendar .react-datepicker {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0 10px 40px rgba(6, 182, 212, 0.2);
+  overflow: hidden;
+}
+
+.custom-calendar .react-datepicker__header {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border-bottom: 1px solid #334155;
+  padding-top: 1rem;
+}
+
+.custom-calendar .react-datepicker__current-month {
+  color: #06b6d4;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.custom-calendar .react-datepicker__day-names {
+  background-color: #1e293b;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.custom-calendar .react-datepicker__day-name {
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.custom-calendar .react-datepicker__month {
+  margin: 0;
+  padding: 1rem;
+  background-color: #0f172a;
+}
+
+.custom-calendar .react-datepicker__day {
+  color: #e2e8f0;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.custom-calendar .react-datepicker__day:hover {
+  background-color: #06b6d4;
+  color: white;
+  transform: scale(1.1);
+}
+
+.custom-calendar .react-datepicker__day--selected,
+.custom-calendar .react-datepicker__day--keyboard-selected {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+}
+
+.custom-calendar .react-datepicker__day--outside-month {
+  color: #64748b;
+}
+
+.custom-calendar .react-datepicker__navigation {
+  top: 1.5rem;
+}
+
+.custom-calendar .react-datepicker__navigation-icon::before {
+  border-color: #06b6d4;
+  border-width: 2px;
+}
+
+.custom-calendar .react-datepicker__today-button {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-top: 1px solid #334155;
+  color: #06b6d4;
+  font-weight: 600;
+  padding: 0.75rem;
+}
+
+/* Popper positioning */
+.react-datepicker-popper {
+  z-index: 9999 !important;
+}
+
+.react-datepicker-popper[data-placement^="bottom"] {
+  padding-top: 0.5rem;
+}
+
+.test {
+  background: #1b1b1be0;
+  content: "Please Select Start Date!";
+}

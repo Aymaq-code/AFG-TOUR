@@ -1,6 +1,5 @@
 // Header.jsx
 import { useState, useEffect } from "react";
-import SearchTour from "../features/booking/SearchTour";
 import Logo from "./Logo";
 import MenuToggle from "./MenuToggle";
 import NavList from "./NavList";
@@ -37,12 +36,13 @@ export default function Header() {
     <header
       className={
         isMenuOpen
-          ? " bg-white/30 backdrop-blur-sm w-full h-full fixed top-0 left-0 z-100 py-6 px-4"
-          : "w-full py-6 px-5 flex justify-between items-center flex-col md:flex-row"
+          ? " bg-black/30 backdrop-blur-3xl w-full h-full py-6 px-4 fixed top-0 z-10 "
+          : "w-full  px-4 flex justify-between items-center flex-col md:flex-row"
       }>
       {/* Logo - Always visible */}
       <div className="w-full md:w-auto flex justify-between items-center">
         <Logo />
+
         {/* Menu Toggle - Only visible on mobile */}
         {isMobile && (
           <MenuToggle isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
@@ -63,7 +63,7 @@ export default function Header() {
         }
       `}>
         <NavList isMobile={isMobile} />
-        <SearchTour isMobile={isMobile} />
+        {/* <SearchTour isMobile={isMobile} /> */}
       </div>
     </header>
   );

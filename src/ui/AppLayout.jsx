@@ -1,16 +1,19 @@
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
-import Tours from "./Tours";
+import About from "./About";
+import Contact from "./Contact";
+import Footer from "./Footer";
 
 export default function AppLayout() {
   return (
-    <div className="appLayout overflow-x-auto">
-      <Header />
+    <div className="appLayout">
       <div>
-        <main className="overflow-auto relative z-10">
+        <main className="">
           <Outlet />
         </main>
       </div>
+      <About />
+      <Contact />
+      <Footer />
     </div>
   );
 }

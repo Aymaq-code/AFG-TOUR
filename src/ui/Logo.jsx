@@ -1,9 +1,10 @@
-import LOGO from "../../public/logo.png";
+import { Link } from "react-router-dom";
+import LOGO from "../../public/logo_1.png";
 import Button from "./Button";
 export default function Logo() {
   return (
-    <Button to="/">
-      <img src={LOGO} className="h-14 w-50" alt="logo" />
-    </Button>
+    <Link to="/">
+      <img src={LOGO} className="h-20" alt="logo" />
+    </Link>
   );
 }
