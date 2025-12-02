@@ -132,16 +132,6 @@ html {
   }
 }
 
-.home {
-  background: linear-gradient(180deg, #0000002d, #00000052),
-    url("../public/afg_img/BIN/BIN-7.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* optional: gives a parallax effect on large screens */
-  height: 100vh;
-}
-
 .home__h1 {
   font-family: "DM Serif Text", serif;
   font-weight: 400;
@@ -241,202 +231,7 @@ html {
     ),
     linear-gradient(90deg, rgb(143, 249, 177), rgb(62, 146, 80));
 }
-.tour {
-  background-image: radial-gradient(
-      circle at 37% 80%,
-      hsla(180, 0%, 7%, 0.1) 0%,
-      hsla(180, 0%, 7%, 0.1) 45%,
-      transparent 45%,
-      transparent 73%,
-      transparent 73%,
-      transparent 100%
-    ),
-    radial-gradient(
-      circle at 60% 45%,
-      hsla(180, 0%, 7%, 0.1) 0%,
-      hsla(180, 0%, 7%, 0.1) 67%,
-      transparent 67%,
-      transparent 71%,
-      transparent 71%,
-      transparent 100%
-    ),
-    radial-gradient(
-      circle at 23% 84%,
-      hsla(180, 0%, 7%, 0.1) 0%,
-      hsla(180, 0%, 7%, 0.1) 55%,
-      transparent 55%,
-      transparent 97%,
-      transparent 97%,
-      transparent 100%
-    ),
-    radial-gradient(
-      circle at 52% 76%,
-      hsla(180, 0%, 7%, 0.1) 0%,
-      hsla(180, 0%, 7%, 0.1) 37%,
-      transparent 37%,
-      transparent 95%,
-      transparent 95%,
-      transparent 100%
-    ),
-    radial-gradient(
-      circle at 50% 81%,
-      hsla(180, 0%, 7%, 0.1) 0%,
-      hsla(180, 0%, 7%, 0.1) 79%,
-      transparent 79%,
-      transparent 85%,
-      transparent 85%,
-      transparent 100%
-    ),
-    linear-gradient(45deg, rgb(31, 89, 11), rgb(104, 210, 51));
-}
-.tourFullDetails {
-  background-image: linear-gradient(
-      0deg,
-      rgba(53, 33, 168, 0.2) 0%,
-      rgba(53, 33, 168, 0.2) 14.286%,
-      rgba(59, 36, 175, 0.2) 14.286%,
-      rgba(59, 36, 175, 0.2) 28.572%,
-      rgba(66, 40, 181, 0.2) 28.572%,
-      rgba(66, 40, 181, 0.2) 42.858%,
-      rgba(46, 30, 162, 0.2) 42.858%,
-      rgba(46, 30, 162, 0.2) 57.144%,
-      rgba(79, 46, 194, 0.2) 57.144%,
-      rgba(79, 46, 194, 0.2) 71.43%,
-      rgba(72, 43, 187, 0.2) 71.43%,
-      rgba(72, 43, 187, 0.2) 85.716%,
-      rgba(85, 49, 200, 0.2) 85.716%,
-      rgba(85, 49, 200, 0.2) 100.002%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(53, 33, 168, 0.2) 0%,
-      rgba(53, 33, 168, 0.2) 14.286%,
-      rgba(59, 36, 175, 0.2) 14.286%,
-      rgba(59, 36, 175, 0.2) 28.572%,
-      rgba(66, 40, 181, 0.2) 28.572%,
-      rgba(66, 40, 181, 0.2) 42.858%,
-      rgba(46, 30, 162, 0.2) 42.858%,
-      rgba(46, 30, 162, 0.2) 57.144%,
-      rgba(79, 46, 194, 0.2) 57.144%,
-      rgba(79, 46, 194, 0.2) 71.43%,
-      rgba(72, 43, 187, 0.2) 71.43%,
-      rgba(72, 43, 187, 0.2) 85.716%,
-      rgba(85, 49, 200, 0.2) 85.716%,
-      rgba(85, 49, 200, 0.2) 100.002%
-    ),
-    linear-gradient(
-      45deg,
-      rgba(53, 33, 168, 0.2) 0%,
-      rgba(53, 33, 168, 0.2) 14.286%,
-      rgba(59, 36, 175, 0.2) 14.286%,
-      rgba(59, 36, 175, 0.2) 28.572%,
-      rgba(66, 40, 181, 0.2) 28.572%,
-      rgba(66, 40, 181, 0.2) 42.858%,
-      rgba(46, 30, 162, 0.2) 42.858%,
-      rgba(46, 30, 162, 0.2) 57.144%,
-      rgba(79, 46, 194, 0.2) 57.144%,
-      rgba(79, 46, 194, 0.2) 71.43%,
-      rgba(72, 43, 187, 0.2) 71.43%,
-      rgba(72, 43, 187, 0.2) 85.716%,
-      rgba(85, 49, 200, 0.2) 85.716%,
-      rgba(85, 49, 200, 0.2) 100.002%
-    ),
-    linear-gradient(90deg, rgb(48, 28, 31), rgb(27, 200, 208));
-}
-.payment {
-  background-image: repeating-linear-gradient(
-      45deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      112.5deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      22.5deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      67.5deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      45deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      157.5deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      112.5deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      135deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      67.5deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      135deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      hsla(253, 0%, 98%, 0.03) 0px,
-      hsla(253, 0%, 98%, 0.03) 1px,
-      transparent 1px,
-      transparent 12px
-    ),
-    linear-gradient(90deg, rgb(104, 26, 199), rgb(197, 45, 137));
-}
+
 .footer {
   background-image: radial-gradient(
       circle at 46% 40%,
@@ -537,7 +332,6 @@ html {
 
 .includes li::before {
   background-color: var(--wpte-icon-color, var(--primary-color, #119a27));
-  background-color: #000000ca;
 }
 
 .excludes li::before {
@@ -639,4 +433,28 @@ html {
 .test {
   background: #1b1b1be0;
   content: "Please Select Start Date!";
+}
+
+/*====Loader====*/
+.loader {
+  width: 60px;
+  aspect-ratio: 2;
+  --_g: no-repeat radial-gradient(circle closest-side, #7dd216 90%, #0000);
+  background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 50%;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
+  }
 }

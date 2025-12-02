@@ -1,6 +1,6 @@
-// src/components/ExtraServices.js
-
-import Button from "../../ui/Button";
+// ExtraServices.jsx (updated)
+import Button from "../../components/common/Button";
+import { formatCurrency } from "../../utils/formatters";
 
 function ExtraServices({
   extra__services,
@@ -10,19 +10,7 @@ function ExtraServices({
   setIndex,
 }) {
   const handleServiceSelection = (service) => {
-    const isAlreadySelected = selectedServices.some((s) => s.id === service.id);
-
-    if (isAlreadySelected) {
-      // Remove service if already selected
-      const updatedServices = selectedServices.filter(
-        (s) => s.id !== service.id
-      );
-      onSelectServices(updatedServices);
-    } else {
-      // Add service if not selected
-      const updatedServices = [...selectedServices, service];
-      onSelectServices(updatedServices);
-    }
+    onSelectServices(service);
   };
 
   const isServiceSelected = (service) => {
@@ -50,8 +38,8 @@ function ExtraServices({
         {selectedServices.length > 0 && (
           <div className="mt-4 p-3 bg-cyan-900/30 rounded-lg">
             <p className="text-cyan-300 font-semibold">
-              {selectedServices.length} service(s) selected - Total: USD{" "}
-              {calculateTotalServicesPrice()}.00
+              {selectedServices.length} service(s) selected - Total:{" "}
+              {formatCurrency(calculateTotalServicesPrice())}
             </p>
           </div>
         )}
@@ -73,7 +61,7 @@ function ExtraServices({
             </div>
             <div className="flex items-center gap-3">
               <p className="text-stone-100 font-semibold">
-                USD {service.price}.00
+                {formatCurrency(service.price)}
               </p>
               <div
                 className={`w-4 h-4 rounded border-2 ${
@@ -103,19 +91,19 @@ function ExtraServices({
         href="https://wa.me/+93708760475?text=Hi! I'd like to inquire about more extra services for my tour"
         target="_blank"
         rel="noopener noreferrer"
-        className=" mt-5 text-stone-100 font-semibold bg-white/20 backdrop-blur-md flex justify-center items-center p-3 rounded-md cursor-pointer hover:bg-white/30 transition-all duration-300">
+        className="mt-5 text-stone-100 font-semibold bg-white/20 backdrop-blur-md flex justify-center items-center p-3 rounded-md cursor-pointer hover:bg-white/30 transition-all duration-300">
         📱 I want more extra services - Contact on WhatsApp
       </a>
-      <div className=" flex justify-between items-center text-stone-50 mt-10">
+
+      <div className="flex justify-between items-center flex-col md:flex-row gap-3 text-stone-50 mt-10">
         <Button type="glass" size="sm" onClick={() => setIndex(index - 1)}>
           Back
         </Button>
-
         <div>
           <Button
             type="glass"
             size="md"
-            className="bg-white/10 backdrop-blur-sm text-stone-50 inline-flex text-md uppercase font-semibold px-10 py-3.5 rounded-full hover:bg-emerald-800  shadow-slate-500 shadow-lg hover:shadow-sm  hover:translate-y-1 transition-all duration-300 cursor-pointer  "
+            className="bg-white/10 backdrop-blur-sm text-stone-50 inline-flex text-md uppercase font-semibold px-10 py-3.5 rounded-full hover:bg-emerald-800 shadow-slate-500 shadow-lg hover:shadow-sm hover:translate-y-1 transition-all duration-300 cursor-pointer"
             to={"/payment"}>
             Proceed To Checkout
           </Button>

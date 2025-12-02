@@ -1,11 +1,11 @@
 // src/components/DateSelection.js
 
 import DatePicker from "react-datepicker";
-import Button from "../../ui/Button";
+import Button from "../../components/common/Button";
 
 function DateSelection({ onClose, startDate, setStartDate, index, setIndex }) {
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-600 rounded-2xl px-5 text-white shadow-xl shadow-slate-900/50 transition-all duration-500">
+    <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-600 rounded-2xl px-5 pt-7 text-white shadow-xl shadow-slate-900/50 transition-all duration-500">
       <h3 className="text-2xl font-bold mb-2 text-center text-cyan-400">
         Select your tour start date
       </h3>

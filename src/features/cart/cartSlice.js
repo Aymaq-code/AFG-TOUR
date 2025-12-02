@@ -1,12 +1,13 @@
-// src/features/cart/cartSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  person: 1,
   items: [
-    { id: "adult", unitPrice: 0, quantity: 0 },
-    { id: "child", unitPrice: 0, quantity: 0 },
+    { id: "adult", unitPrice: 0, quantity: 1, type: "person" },
+    { id: "child", unitPrice: 0, quantity: 0, type: "person" },
   ],
+  selectedHotel: null,
+  selectedExtras: [],
+  selectedDate: null,
   totalPrice: 0,
   discount: 0,
   couponCode: "",
@@ -15,108 +16,90 @@ const initialState = {
 const cartSlice = createSlice({
   name: "cart",
   initialState,
+
   reducers: {
-    addPerson(state) {
-      state.person += 1;
-    },
-    removePerson(state) {
-      if (state.person > 1) state.person -= 1;
-    },
-    setPerson(state, action) {
-      const n = Number(action.payload);
-      if (!Number.isNaN(n) && n >= 1) state.person = n;
-    },
-    addToCart(state, action) {
-      const { tour, quantity = 1 } = action.payload;
-      const existingItem = state.items.find((item) => item.id === tour.id);
-
-      if (existingItem) {
-        existingItem.quantity += quantity;
-      } else {
-        state.items.push({ ...tour, quantity });
-      }
-      state.totalPrice = state.items.reduce(
-        (total, item) => total + item.unitPrice * item.quantity,
-        0
-      );
-    },
-    removeFromCart(state, action) {
-      state.items = state.items.filter((item) => item.id !== action.payload);
-      state.totalPrice = state.items.reduce(
-        (total, item) => total + item.unitPrice * item.quantity,
-        0
-      );
-    },
     updateQuantity(state, action) {
-      const { id, quantity, unitPrice } = action.payload;
+      const { id, quantity } = action.payload;
       const item = state.items.find((i) => i.id === id);
-
       if (!item) return;
-
-      // prevent negative numbers
-      if (quantity < 0) return;
+      if (id === "adult" && quantity < 1) return;
 
       item.quantity = quantity;
-
-      // Update unitPrice if provided (for initial setup)
-      if (unitPrice !== undefined) {
-        item.unitPrice = unitPrice;
-      }
-
-      state.totalPrice = state.items.reduce(
-        (t, i) => t + i.unitPrice * i.quantity,
-        0
-      );
+      cartSlice.caseReducers.recalculateTotal(state);
     },
 
-    // New action to initialize prices
     initializePrices(state, action) {
       const { adultPrice, childPrice } = action.payload;
-      const adultItem = state.items.find((item) => item.id === "adult");
-      const childItem = state.items.find((item) => item.id === "child");
-
-      if (adultItem && adultItem.unitPrice === 0) {
-        adultItem.unitPrice = adultPrice;
-        adultItem.quantity = 1; // Default to 1 adult
-      }
-
-      if (childItem && childItem.unitPrice === 0) {
-        childItem.unitPrice = childPrice;
-      }
-
-      // Recalculate total
-      state.totalPrice = state.items.reduce(
-        (total, item) => total + item.unitPrice * item.quantity,
-        0
-      );
+      state.items.forEach((item) => {
+        if (item.id === "adult") {
+          item.unitPrice = adultPrice;
+          item.quantity = 1;
+        } else if (item.id === "child") {
+          item.unitPrice = childPrice;
+        }
+      });
+      cartSlice.caseReducers.recalculateTotal(state);
     },
 
+    recalculateTotal(state) {
+      const personsTotal = state.items.reduce(
+        (sum, item) => sum + item.unitPrice * item.quantity,
+        0
+      );
+
+      const hotelTotal = state.selectedHotel ? state.selectedHotel.price : 0;
+
+      const extrasTotal = state.selectedExtras.reduce(
+        (sum, extra) => sum + extra.price,
+        0
+      );
+
+      const subtotal = personsTotal + hotelTotal + extrasTotal;
+
+      state.totalPrice = subtotal - state.discount;
+    },
+
+    selectHotel(state, action) {
+      state.selectedHotel = action.payload;
+      cartSlice.caseReducers.recalculateTotal(state);
+    },
+
+    toggleExtraService(state, action) {
+      const service = action.payload;
+      const exists = state.selectedExtras.find((s) => s.id === service.id);
+
+      state.selectedExtras = exists
+        ? state.selectedExtras.filter((s) => s.id !== service.id)
+        : [...state.selectedExtras, service];
+
+      cartSlice.caseReducers.recalculateTotal(state);
+    },
+
+    setTourDate(state, action) {
+      state.selectedDate = action.payload;
+    },
+
+    // ⭐ Correct coupon reducer
     applyCoupon(state, action) {
       const { code, discount } = action.payload;
       state.couponCode = code;
       state.discount = discount;
+      cartSlice.caseReducers.recalculateTotal(state);
     },
+
     clearCart(state) {
-      state.items = [
-        { id: "adult", unitPrice: 0, quantity: 0 },
-        { id: "child", unitPrice: 0, quantity: 0 },
-      ];
-      state.person = 1;
-      state.totalPrice = 0;
-      state.discount = 0;
-      state.couponCode = "";
+      Object.assign(state, initialState);
     },
   },
 });
 
 export const {
-  addPerson,
-  removePerson,
-  setPerson,
-  addToCart,
-  removeFromCart,
   updateQuantity,
   initializePrices,
+  recalculateTotal, // ⭐ Add this export
+  selectHotel,
+  toggleExtraService,
+  setTourDate,
   applyCoupon,
   clearCart,
 } = cartSlice.actions;
