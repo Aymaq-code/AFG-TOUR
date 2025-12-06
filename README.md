@@ -65,8 +65,8 @@ This project highlights your expertise in building **real-world front-end applic
 
 ### **Tour Details Page**
 
-![Tour Details](./public/app_images/tours.png)
+![Tour Details](./public/app_images/tours.webp)
 
 ### **Booking Steps**
 
-![Booking](./public/app_images/paymentpage.png)
+![Booking](./public/app_images/paymentpage.webp)

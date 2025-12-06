@@ -1,15 +1,18 @@
-import IMG_2 from "../../../public/app_images/pexels-poli-godoy-3660947-5477879.jpg";
+import IMG_2 from "../../../public/app_images/abouImage_1.webp";
 import Header from "../../components/layout/Header";
 export default function About() {
   return (
     <>
-      <Header />
+      <div className=" bg-[#757575] shadow-black/80 shadow-[0_0_9px_3px]">
+        <Header />
+      </div>
+
       <div
         id="about-section"
-        className="  min-h-screen flex flex-col md:flex-row-reverse items-center justify-center gap-8 sm:gap-12 md:gap-25 font-sans py-8 sm:py-12 md:py-4 px-4 sm:px-6 md:px-[30px]">
-        <div className="w-full md:w-[40%] md:pl-10 text-stone-50 ">
-          <h1 className=" text-stone-700 text-2xl sm:text-3xl md:text-4xl leading-8 sm:leading-10 md:leading-[45px] font-semibold mb-4 sm:mb-6 tracking-[1px] sm:tracking-[2px] pr-70 md:pr-80">
-            Learn more about our {""}
+        className=" min-h-screen flex flex-col lg:flex-row-reverse items-center justify-center gap-5 lg:gap-25 font-sans lg:mt-1 mt-20 py-8 lg:py-4 px-8 md:px-10 lg:px-20">
+        <div className=" border-blue-500 w-full text-stone-50 ">
+          <h1 className=" capitalize text-stone-700 text-2xl sm:text-3xl md:text-4xl leading-8 sm:leading-10 md:leading-[45px] font-semibold mb-4 sm:mb-6 tracking-[1px] sm:tracking-[2px] ">
+            Learn more about our <br />
             <span className="bg-linear-to-r from-lime-200 to-lime-400 bg-clip-text text-transparent">
               missions
             </span>
@@ -27,7 +30,7 @@ export default function About() {
             consectetur adipisicing elit.
           </p>
         </div>
-        <div className="w-full md:w-[35%] relative flex mt-8 sm:mt-12 md:mt-25">
+        <div className=" w-full relative flex mt-8 sm:mt-12 md:mt-25">
           <span className="aboutImg1 shadow-xl"></span>
           <img className="aboutImg2 shadow-xl" src={IMG_2} alt="img" />
         </div>

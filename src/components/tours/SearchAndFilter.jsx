@@ -22,7 +22,7 @@ export default function SearchTour({
         placeholder="Find tour..."
         value={inputValue}
         onChange={handleSearch}
-        className="w-full md:w-md px-3 py-2 focus:outline-none rounded-full placeholder:text-stone-300 text-stone-200 border"
+        className="w-full md:w-md px-3 py-2 focus:outline-none rounded-full placeholder:text-stone-400 text-stone-900 border border-stone-400"
       />
       {!hasSearchResults && inputValue.trim() !== "" && (
         <p className="text-red-400 text-sm mt-2 ml-2">

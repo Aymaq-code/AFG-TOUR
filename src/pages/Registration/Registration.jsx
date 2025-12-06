@@ -1,14 +1,5 @@
-// Registration.jsx (updated)
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  initializePrices,
-  selectHotel,
-  toggleExtraService,
-  setTourDate,
-} from "../../features/cart/cartSlice";
-
-import "react-datepicker/dist/react-datepicker.css";
+import React, { useEffect } from "react";
+import { useRegistrationStore } from "../../store/registrationStore";
 import ProgressBar from "../../features/cart/ProgressBar";
 import DateSelection from "../../features/cart/DateSelection";
 import PersonSelection from "../../features/cart/PersonSelection";
@@ -23,129 +14,64 @@ export default function Registration({
   childPrice,
   accommodation,
   extra__services,
+  conversionRate = 1,
 }) {
-  const dispatch = useDispatch();
-  const { conversionRate } = useSelector((state) => state.currency);
-
-  const [startDate, setStartDate] = useState(null);
-  const [selectedHotel, setSelectedHotel] = useState(null);
-  const [selectedServices, setSelectedServices] = useState([]);
-  const [index, setIndex] = useState(0);
-
-  // Convert prices when currency changes
-  const convertedAdultPrice = adultPrice * conversionRate;
-  const convertedChildPrice = childPrice * conversionRate;
-  const convertedAccommodation = accommodation?.map((hotel) => ({
-    ...hotel,
-    price: hotel.price * conversionRate,
-  }));
-  const convertedServices = extra__services?.map((service) => ({
-    ...service,
-    price: service.price * conversionRate,
-  }));
+  const setOnClose = useRegistrationStore((s) => s.setOnClose);
+  const index = useRegistrationStore((s) => s.index);
+  const setUnitPrices = useRegistrationStore((s) => s.setUnitPrices);
+  const startDate = useRegistrationStore((s) => s.startDate);
+  const adultUnitPrice = useRegistrationStore((s) => s.adultUnitPrice);
+  const selectedHotel = useRegistrationStore((s) => s.selectedHotel);
+  const selectedServices = useRegistrationStore((s) => s.selectedServices);
 
   useEffect(() => {
-    dispatch(
-      initializePrices({
-        adultPrice: convertedAdultPrice,
-        childPrice: convertedChildPrice,
-      })
-    );
-  }, [dispatch, adultPrice, childPrice, conversionRate]);
+    // expose the parent onClose to the store so children can call close()
+    setOnClose(() => onClose);
 
-  const handleDateChange = (date) => {
-    setStartDate(date);
-    dispatch(setTourDate(date));
-  };
+    // convert prices using conversionRate and set them in Zustand
+    const convertedAdult = adultPrice * conversionRate;
+    const convertedChild = childPrice * conversionRate;
+    setUnitPrices({ adult: convertedAdult, child: convertedChild });
 
-  const handleHotelSelect = (hotel) => {
-    setSelectedHotel(hotel);
-    dispatch(selectHotel(hotel));
-  };
-
-  const handleServiceToggle = (service) => {
-    const exists = selectedServices.find((s) => s.id === service.id);
-    const updated = exists
-      ? selectedServices.filter((s) => s.id !== service.id)
-      : [...selectedServices, service];
-    setSelectedServices(updated);
-    dispatch(toggleExtraService(service));
-  };
+    // cleanup on unmount
+    return () => {
+      setOnClose(null);
+    };
+  }, [
+    adultPrice,
+    childPrice,
+    conversionRate,
+    onClose,
+    setOnClose,
+    setUnitPrices,
+  ]);
 
   const sections = [
-    {
-      id: 1,
-      section: (
-        <DateSelection
-          onClose={onClose}
-          startDate={startDate}
-          setStartDate={handleDateChange}
-          index={index}
-          setIndex={setIndex}
-        />
-      ),
-    },
-    {
-      id: 2,
-      section: (
-        <PersonSelection
-          adultPrice={convertedAdultPrice}
-          childPrice={convertedChildPrice}
-          index={index}
-          setIndex={setIndex}
-        />
-      ),
-    },
-    {
-      id: 3,
-      section: (
-        <Accommodation
-          accommodation={convertedAccommodation}
-          selectedHotel={selectedHotel}
-          onHotelSelect={handleHotelSelect}
-          index={index}
-          setIndex={setIndex}
-        />
-      ),
-    },
-    {
-      id: 4,
-      section: (
-        <ExtraServices
-          extra__services={convertedServices}
-          selectedServices={selectedServices}
-          onSelectServices={handleServiceToggle}
-          index={index}
-          setIndex={setIndex}
-        />
-      ),
-    },
+    { id: 0, component: <DateSelection /> },
+    { id: 1, component: <PersonSelection /> },
+    { id: 2, component: <Accommodation accommodation={accommodation} /> },
+    { id: 3, component: <ExtraServices extra__services={extra__services} /> },
   ];
 
   return (
-    <div className="bg-black/80 w-full h-full md:h-[100vh] fixed top-0 left-0 z-20 md:py-5 overflow-y-auto ">
-      <div className="flex flex-col md:flex-row bg-white md:p-4 max-w-[80rem] mx-auto md:rounded-2xl shadow-xl mt-4 gap-4">
-        <div className="bg-stone-100 p-4 rounded-xl w-full md:w-[65%]">
-          <div className="shadow-sm shadow-stone-400 rounded-full">
+    <div className="bg-black/80 w-full h-full md:h-[100vh] fixed top-0 left-0 z-20 md:py-5 overflow-y-auto">
+      <div className="flex flex-col md:flex-row bg-white md:p-4 max-w-[80rem] mx-auto md:rounded-2xl  mt-4 gap-4">
+        <div className="bg-stone-100 p-4 rounded-xl w-full md:w-[65%] shadow-xl shadow-stone-400">
+          <div className="crounded-full">
             <ProgressBar
               startDate={startDate}
-              adultPrice={convertedAdultPrice}
+              adultPrice={adultUnitPrice}
               selectedHotel={selectedHotel}
               selectedServices={selectedServices}
               index={index}
             />
           </div>
-          <div className="mt-4 md:p-4">{sections[index].section}</div>
+
+          <div className="mt-4 md:p-4">{sections[index].component}</div>
         </div>
-        <div className="bg-stone-100 p-4 rounded-xl w-full md:w-[35%] md:sticky md:top-4">
-          <ResultsSidebar
-            name={name}
-            startDate={startDate}
-            selectedHotel={selectedHotel}
-            selectedServices={selectedServices}
-            adultPrice={convertedAdultPrice}
-            childPrice={convertedChildPrice}
-          />
+
+        <div className="  p-4 rounded-xl w-full md:w-[35%] md:sticky md:top-4 md:rounded-2xl shadow-xl shadow-stone-400 bg-stone-100 ">
+          <ResultsSidebar name={name} />
         </div>
       </div>
     </div>

@@ -1,23 +1,12 @@
-// Accommodation.jsx (updated)
-
+import { useRegistrationStore } from "../../store/registrationStore";
 import Button from "../../components/common/Button";
 import { formatCurrency } from "../../utils/formatters";
 
-function Accommodation({
-  accommodation,
-  selectedHotel,
-  onHotelSelect,
-  index,
-  setIndex,
-}) {
-  const handleHotelSelection = (hotel) => {
-    onHotelSelect(hotel);
-    alert(
-      `${hotel.stars} star hotel selected: ${
-        hotel.hotel
-      }\nPrice: ${formatCurrency(hotel.price)}`
-    );
-  };
+function Accommodation({ accommodation = [] }) {
+  const selectedHotel = useRegistrationStore((s) => s.selectedHotel);
+  const selectHotel = useRegistrationStore((s) => s.selectHotel);
+  const next = useRegistrationStore((s) => s.next);
+  const prev = useRegistrationStore((s) => s.prev);
 
   return (
     <div className="bg-gray-100 rounded-xl px-5 text-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-xl shadow-slate-900/50">
@@ -32,8 +21,8 @@ function Accommodation({
         </div>
         {accommodation.map((item, idx) => (
           <div
-            onClick={() => handleHotelSelection(item)}
             key={idx}
+            onClick={() => selectHotel(item)}
             className={`bg-white/20 backdrop-blur-md flex justify-between items-center p-2 rounded-md mt-2 cursor-pointer hover:bg-white/30 transition-all duration-300 ${
               selectedHotel?.hotel === item.hotel ? "ring-2 ring-cyan-400" : ""
             }`}>
@@ -48,11 +37,11 @@ function Accommodation({
           </div>
         ))}
         <div className="flex justify-between items-center mt-7">
-          <Button type="glass" size="sm" onClick={() => setIndex(index - 1)}>
+          <Button type="glass" size="sm" onClick={() => prev()}>
             Back
           </Button>
           {selectedHotel && (
-            <Button type="glass" size="sm" onClick={() => setIndex(index + 1)}>
+            <Button type="glass" size="sm" onClick={() => next()}>
               Continue
             </Button>
           )}

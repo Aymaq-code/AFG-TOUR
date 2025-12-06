@@ -32,6 +32,16 @@ export default function Header() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isMobile, isMenuOpen]);
 
+  useEffect(() => {
+    if (isMenuOpen && isMobile) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+
+    return () => document.body.classList.remove("no-scroll");
+  }, [isMenuOpen, isMobile]);
+
   return (
     <header
       className={

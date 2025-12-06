@@ -8,6 +8,7 @@ export default function Button({
   disabled,
   onClick,
   className = "",
+  value, // Added value prop
 }) {
   const base =
     "inline-flex items-center justify-center font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded-full";
@@ -21,15 +22,26 @@ export default function Button({
 
   const variants = {
     glass:
-      "bg-white/20 backdrop-blur-sm text-white hover:bg-emerald-800 hover:translate-y-1",
+      "bg-white/20 backdrop-blur-sm text-white hover:bg-[#E0E0E0] hover:text-[#424242] hover:translate-y-1",
     solid:
       "bg-emerald-700 text-white hover:bg-emerald-800 hover:translate-y-1 shadow-lg",
     outline:
       "border border-white text-white hover:bg-white hover:text-stone-900 hover:translate-y-1",
     icon: "w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-slate-800 text-white hover:bg-slate-900",
+    secondary:
+      " bg-[#607D8B] text-white rounded-sm transition-all duration-300 hover:bg-[#78909C] shadow-black/40 shadow-[0_0_8px_3px] hover:shadow-black/30  hover:shadow-[0_0_4px_1px] hover:translate-y-1 ",
+    tertiary: "bg-stone-700 text-white",
   };
 
   const finalClass = `${base} ${sizes[size]} ${variants[type]} ${className}`;
+
+  // Handle click with value
+  const handleClick = (e) => {
+    if (onClick) {
+      // Pass both event and value to onClick handler
+      onClick(e, value);
+    }
+  };
 
   if (to)
     return (
@@ -39,7 +51,12 @@ export default function Button({
     );
 
   return (
-    <button onClick={onClick} disabled={disabled} className={finalClass}>
+    <button
+      onClick={handleClick}
+      disabled={disabled}
+      className={finalClass}
+      data-value={value} // Also set as data attribute for easy access
+    >
       {children}
     </button>
   );

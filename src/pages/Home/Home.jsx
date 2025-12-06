@@ -7,7 +7,7 @@ import Button from "../../components/common/Button";
  */
 export default function Home() {
   return (
-    <div className=" bg-[url('/afg_img/BIN/BIN-7.jpg')] bg-no-repeat bg-cover bg-center min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className=" bg-[url('/afg_img/BIN/BIN-7.webp')] bg-no-repeat bg-cover bg-center min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Header with navigation */}
       <Header />
 

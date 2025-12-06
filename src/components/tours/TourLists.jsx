@@ -31,9 +31,9 @@ export default function TourList({ tour }) {
   return (
     <div
       className={`
-      bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-2xl 
-      border border-white/20 hover:border-white/30 transition-all duration-300
-      group hover:shadow-2xl
+   bg-stone-100 rounded-2xl p-6 shadow-black/40 shadow-[0_2px_4px]
+       transition-all duration-300
+      group hover:shadow-[0_1px_1px] hover:translate-y-1
       ${isExpanded ? "h-auto" : "h-[460px]"}
     `}>
       {/* Image Section */}
@@ -52,7 +52,7 @@ export default function TourList({ tour }) {
       {/* Content Section */}
       <div className="space-y-4">
         {/* Tour Name */}
-        <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">
+        <h3 className="text-xl font-bold text-stone-950 group-hover:text-[#3E2723] transition-all duration-300">
           {name}
         </h3>
 
@@ -60,9 +60,8 @@ export default function TourList({ tour }) {
         <div className="space-y-2">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-stone-100 font-semibold text-sm hover:text-cyan-300 transition-colors flex items-center gap-1"
-            type="button" // FIXED: Added button type for accessibility
-          >
+            className="text-stone-800 font-semibold text-sm hover:text-black transition-colors flex items-center gap-1 cursor-pointer"
+            type="button">
             {isExpanded ? "Hide" : "View"} Tourist Spots
             <span
               className={`transform transition-transform ${
@@ -77,12 +76,12 @@ export default function TourList({ tour }) {
             <ul className="space-y-2">
               {touristSpots.map((spot, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <span className="text-green-400 mt-1 flex-shrink-0">•</span>
+                  <span className="text-[#4E342E] mt-1 flex-shrink-0">•</span>
                   <div className="flex-1">
-                    <span className="text-white font-medium text-sm block">
+                    <span className="text-stone-800 font-medium text-sm block">
                       {spot.name}
                     </span>
-                    <p className="text-stone-300 text-xs mt-1">
+                    <p className="text-stone-700 text-xs mt-1">
                       {spot.description}
                     </p>
                   </div>
@@ -94,27 +93,26 @@ export default function TourList({ tour }) {
 
         {/* Tour Features */}
         <div className="flex gap-2 flex-wrap">
-          <span className="bg-white/20 text-stone-100 px-3 py-1 rounded-full text-xs">
-            ⏱ {days} {pluralize(days, "Day")}
+          <span className="bg-stone-200 text-stone-600 px-3 py-1 rounded-full text-xs">
+            {/* ⏱ {days} {pluralize(days, "Day")} */}⏱ {days}
           </span>
-          <span className="bg-white/20 text-stone-100 px-3 py-1 rounded-full text-xs">
+          <span className="bg-stone-200 text-stone-600 px-3 py-1 rounded-full text-xs">
             👥 Up to {pax} {pluralize(pax, "Person")}
           </span>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex items-center justify-between pt-4 border-t border-white/20">
-          {/* Map Link */}
+        {/* Map Link */}
+        <div className="flex items-center justify-between pt-4 border-t border-stone-300">
           <a
             href={mapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-stone-100 hover:text-cyan-300 text-sm font-medium transition-colors">
+            className="text-stone-800 hover:text-cyan-300 text-sm font-medium transition-colors">
             View on Map
           </a>
 
           {/* Details Button */}
-          <Button to={`/tours/${id}`} type="glass" size="md">
+          <Button to={`/tours/${id}`} type="tertiary" size="md">
             View Details
           </Button>
         </div>

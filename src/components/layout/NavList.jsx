@@ -3,15 +3,9 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 export default function NavList({ isMobile }) {
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
   const username = useSelector((state) => state.user.username);
   return (
-    <nav className={`${!isMobile ? "w-full" : ""}`}>
+    <nav className={`${!isMobile ? "w-full " : ""}`}>
       <ul
         className={`
         space-x-10 flex text-white

@@ -1,9 +1,14 @@
-// src/components/DateSelection.js
-
 import DatePicker from "react-datepicker";
 import Button from "../../components/common/Button";
+import { useRegistrationStore } from "../../store/registrationStore";
+import "react-datepicker/dist/react-datepicker.css";
 
-function DateSelection({ onClose, startDate, setStartDate, index, setIndex }) {
+function DateSelection() {
+  const startDate = useRegistrationStore((s) => s.startDate);
+  const setStartDate = useRegistrationStore((s) => s.setStartDate);
+  const next = useRegistrationStore((s) => s.next);
+  const onClose = useRegistrationStore((s) => s.onClose);
+
   return (
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-600 rounded-2xl px-5 pt-7 text-white shadow-xl shadow-slate-900/50 transition-all duration-500">
       <h3 className="text-2xl font-bold mb-2 text-center text-cyan-400">
@@ -36,21 +41,25 @@ function DateSelection({ onClose, startDate, setStartDate, index, setIndex }) {
         </p>
       )}
 
-      <a
-        className="flex justify-center mt-8 gap-4 cursor-pointer"
-        onClick={() => onClose(false)}>
-        Close
-      </a>
-      <div className=" flex justify-between items-center mt-5 mb-3">
-        <Button
-          type="glass"
-          size="sm"
-          disabled={index === 0}
-          onClick={() => setIndex(index - 1)}>
+      {/* Changed to button with better styling */}
+      {onClose && (
+        <div className="flex justify-center mt-8">
+          <button
+            type="button"
+            onClick={() => onClose()}
+            className="text-cyan-400 hover:text-cyan-300 hover:underline cursor-pointer transition-colors duration-300">
+            Close
+          </button>
+        </div>
+      )}
+
+      <div className="flex justify-between items-center mt-5 mb-3">
+        <Button type="glass" size="sm" disabled>
           Back
         </Button>
+
         {startDate && (
-          <Button type="glass" size="sm" onClick={() => setIndex(index + 1)}>
+          <Button type="glass" size="sm" onClick={next}>
             Continue
           </Button>
         )}
