@@ -7,7 +7,6 @@ function DateSelection() {
   const startDate = useRegistrationStore((s) => s.startDate);
   const setStartDate = useRegistrationStore((s) => s.setStartDate);
   const next = useRegistrationStore((s) => s.next);
-  const onClose = useRegistrationStore((s) => s.onClose);
 
   return (
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-600 rounded-2xl px-5 pt-7 text-white shadow-xl shadow-slate-900/50 transition-all duration-500">
@@ -39,18 +38,6 @@ function DateSelection() {
             day: "numeric",
           })}
         </p>
-      )}
-
-      {/* Changed to button with better styling */}
-      {onClose && (
-        <div className="flex justify-center mt-8">
-          <button
-            type="button"
-            onClick={() => onClose()}
-            className="text-cyan-400 hover:text-cyan-300 hover:underline cursor-pointer transition-colors duration-300">
-            Close
-          </button>
-        </div>
       )}
 
       <div className="flex justify-between items-center mt-5 mb-3">

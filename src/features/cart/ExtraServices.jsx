@@ -1,12 +1,11 @@
 import { useRegistrationStore } from "../../store/registrationStore";
 import Button from "../../components/common/Button";
-import { formatCurrency } from "../../utils/formatters";
+import { formatPrice } from "../../utils/formatters";
 
 export default function ExtraServices({ extra__services }) {
   const selectedServices = useRegistrationStore((s) => s.selectedServices);
   const toggleService = useRegistrationStore((s) => s.toggleService);
 
-  const next = useRegistrationStore((s) => s.next);
   const prev = useRegistrationStore((s) => s.prev);
 
   return (
@@ -36,14 +35,14 @@ export default function ExtraServices({ extra__services }) {
               <p className="text-sm text-slate-300">{service.description}</p>
             </div>
             <p className="text-stone-100 font-semibold">
-              {formatCurrency(service.price)}
+              {formatPrice(service.price)}
             </p>
           </div>
         ))}
       </div>
 
       <div className="flex justify-between mt-10 flex-col gap-3 md:flex-row ">
-        <Button type="glass" size="sm" onClick={prev}>
+        <Button size="md" onClick={prev} className="">
           Back
         </Button>
         <div>

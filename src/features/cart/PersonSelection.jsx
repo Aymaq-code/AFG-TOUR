@@ -1,8 +1,8 @@
 import Button from "../../components/common/Button";
 import { useRegistrationStore } from "../../store/registrationStore";
-import { formatCurrency } from "../../utils/formatters";
+import { formatPrice } from "../../utils/formatters";
 
-export default function PersonSelection() {
+export default function PersonSelection({ selectedCurrencyState }) {
   const adult = useRegistrationStore((s) => s.adultQuantity);
   const child = useRegistrationStore((s) => s.childQuantity);
   const adultUnitPrice = useRegistrationStore((s) => s.adultUnitPrice);
@@ -32,8 +32,8 @@ export default function PersonSelection() {
           </div>
           <div>
             <p className="text-stone-50">
-              <span className="font-semibold">
-                {formatCurrency(adultUnitPrice)}
+              <span className="font-semibold" onChange={selectedCurrencyState}>
+                {formatPrice(adultUnitPrice)}
               </span>
             </p>
             <p className="text-stone-300">/Person</p>
@@ -62,7 +62,7 @@ export default function PersonSelection() {
           <div>
             <p className="text-stone-50">
               <span className="font-semibold">
-                {formatCurrency(childUnitPrice)}
+                {formatPrice(childUnitPrice)}
               </span>
             </p>
             <p className="text-stone-300">/Person</p>

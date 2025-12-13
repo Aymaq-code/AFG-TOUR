@@ -1,6 +1,6 @@
 import { useRegistrationStore } from "../../store/registrationStore";
 import Button from "../../components/common/Button";
-import { formatCurrency } from "../../utils/formatters";
+import { formatPrice } from "../../utils/formatters";
 
 function Accommodation({ accommodation = [] }) {
   const selectedHotel = useRegistrationStore((s) => s.selectedHotel);
@@ -32,7 +32,7 @@ function Accommodation({ accommodation = [] }) {
             </h3>
             <p className="text-stone-300 text-sm">{item.room}</p>
             <p className="text-stone-100 text-sm font-semibold">
-              Price: {formatCurrency(item.price)}
+              Price: {formatPrice(item.price)}
             </p>
           </div>
         ))}

@@ -96,46 +96,18 @@ const tourSlice = createSlice({
     toggleExpandDay5: (state) => {
       state.expandedDays.day5 = !state.expandedDays.day5;
     },
-
-    // Reset tour state
-    clearTour: (state) => {
-      state.tour = null;
-      state.loading = false;
-      state.error = null;
-      state.expandedDays = initialState.expandedDays;
-      state.showNavbar = false;
-      state.isGalleryOpen = false;
-      state.selectedImage = null;
-    },
-  },
-
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchTourDetails.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchTourDetails.fulfilled, (state, action) => {
-        state.loading = false;
-        state.tour = action.payload;
-      })
-      .addCase(fetchTourDetails.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      });
   },
 });
 
-// Export all actions for both old and new usage
 export const {
   setShowNavbar,
-  setOpenGallery, // Old gallery action name
-  setImage, // Old image action name
-  setGalleryOpen, // New gallery action name
-  setSelectedImage, // New image action name
+  setOpenGallery,
+  setImage,
+  setGalleryOpen,
+  setSelectedImage,
   toggleExpandAll,
-  toggleExpandDay, // New dynamic day toggle
-  toggleExpandDay1, // Old individual day toggles
+  toggleExpandDay,
+  toggleExpandDay1,
   toggleExpandDay2,
   toggleExpandDay3,
   toggleExpandDay4,

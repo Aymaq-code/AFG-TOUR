@@ -26,11 +26,12 @@ export default function Button({
     solid:
       "bg-emerald-700 text-white hover:bg-emerald-800 hover:translate-y-1 shadow-lg",
     outline:
-      "border border-white text-white hover:bg-white hover:text-stone-900 hover:translate-y-1",
+      "border border-white text-white hover:bg-white hover:text-stone-900 rounded-none ",
     icon: "w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-slate-800 text-white hover:bg-slate-900",
     secondary:
       " bg-[#607D8B] text-white rounded-sm transition-all duration-300 hover:bg-[#78909C] shadow-black/40 shadow-[0_0_8px_3px] hover:shadow-black/30  hover:shadow-[0_0_4px_1px] hover:translate-y-1 ",
-    tertiary: "bg-stone-700 text-white",
+    tertiary:
+      "bg-stone-700 text-white shadow-black/80 shadow-[0_2px_2px] transition-all duration-300 hover:bg-stone-800  ",
   };
 
   const finalClass = `${base} ${sizes[size]} ${variants[type]} ${className}`;

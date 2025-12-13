@@ -2,7 +2,6 @@ import { useLoaderData, useNavigation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState, useMemo, useEffect } from "react";
 
-// Components
 import CreateUser from "../../features/user/CreateUser";
 import LoadingSpinner from "../../components/common/LoadingSpinner";
 import SearchAndFilter from "../../components/tours/SearchAndFilter";
@@ -10,10 +9,6 @@ import Header from "../../components/layout/Header";
 import TourList from "../../components/tours/TourLists";
 import { filterTours } from "../../utils/helpers";
 
-/**
- * Tours Page Component
- * Displays list of available tour packages with search and filter functionality
- */
 export default function Tours() {
   const tours = useLoaderData();
   const navigation = useNavigation();

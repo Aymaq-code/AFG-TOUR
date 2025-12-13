@@ -11,19 +11,18 @@ function CreateUser() {
     e.preventDefault();
     if (!username) return;
     dispatch(updateName(username));
-    setUsername("");
   }
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="py-20 sm:py-30 md:py-46 px-4 sm:px-6 md:px-10 text-center ">
-      <p className="mb-4 sm:mb-6 md:mb-7 text-base sm:text-lg md:text-2xl text-stone-900 text-shadow-sm">
+      className=" mx-auto py-20 md:py-10 lg:py-40 px-2 text-center ">
+      <p className=" text-[20px] lg:text-2xl text-stone-900 text-shadow-sm">
         👋 Welcome! Please start by telling us your name:
       </p>
 
       <input
-        className="w-full sm:w-70 md:w-85 outline-none text-black rounded-full px-4 sm:px-6 p-2 sm:p-3 mb-4 placeholder:text-stone-400 shadow-black/30 shadow-[0_0_3px_2px] text-sm sm:text-base"
+        className="w-full lg:w-85 mt-7 outline-none text-black rounded-full px-4 sm:px-6 p-2 sm:p-3 mb-4 placeholder:text-stone-400 shadow-black/30 shadow-[0_0_3px_2px] text-md lg:text-lg  "
         type="text"
         placeholder="Your full name"
         value={username}
@@ -32,7 +31,7 @@ function CreateUser() {
 
       {username !== "" && (
         <div>
-          <Button type="tertiary" size="lg">
+          <Button type="tertiary" size="lg" className="w-full lg:w-85">
             Start journey
           </Button>
         </div>

@@ -1,9 +1,5 @@
 import { getTours } from "../../services/apiTour";
 
-/**
- * Loader function for tours page
- * Fetches all available tours from the API
- */
 export async function loader() {
   // ✅ Export as 'loader'
   try {

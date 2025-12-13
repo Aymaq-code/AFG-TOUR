@@ -47,10 +47,10 @@ export default function Header() {
       className={
         isMenuOpen
           ? " bg-black/30 backdrop-blur-3xl w-full h-full py-6 px-4 fixed top-0 z-[1000] "
-          : "w-full  px-4 flex justify-between items-center flex-col md:flex-row"
+          : "w-full  px-4 flex justify-between items-center flex-col md:flex-row "
       }>
       {/* Logo - Always visible */}
-      <div className="w-full md:w-auto flex justify-between items-center">
+      <div className="w-full md:w-auto flex justify-between items-center logaAnimate">
         <Logo />
         {/* Menu Toggle - Only visible on mobile */}
         {isMobile && (

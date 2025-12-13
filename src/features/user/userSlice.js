@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  username: "",
+  username: localStorage.getItem("username") || "",
 };
 
 const userSlice = createSlice({
@@ -11,9 +11,15 @@ const userSlice = createSlice({
   reducers: {
     updateName(state, action) {
       state.username = action.payload;
+      localStorage.setItem("username", action.payload);
+    },
+
+    clearName(state) {
+      state.username = "";
+      localStorage.removeItem("username");
     },
   },
 });
 
-export const { updateName } = userSlice.actions;
+export const { updateName, clearName } = userSlice.actions;
 export default userSlice.reducer;

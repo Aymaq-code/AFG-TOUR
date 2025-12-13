@@ -50,6 +50,7 @@ This project highlights your expertise in building **real-world front-end applic
 
 - React Router (HashRouter, loaders, errors, nested routes)
 - Redux Toolkit slices (cart, user, currency)
+- Zustand global state management
 - Tailwind CSS styling
 - Custom hooks + optimized rendering with `useMemo`
 - Error boundary + loading states

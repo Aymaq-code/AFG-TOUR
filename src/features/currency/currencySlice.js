@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const EXCHANGE_RATES = {
   USD: 1,
   EUR: 0.92,
-  AED: 3.67,
+  AED: 3.66,
 };
 
 const initialState = {

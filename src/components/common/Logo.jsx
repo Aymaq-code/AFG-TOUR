@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LOGO from "../../../public/logo_1.png";
+import LOGO from "../../../public/logo_1.webp";
 export default function Logo() {
   return (
     <Link to="/">

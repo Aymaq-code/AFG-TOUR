@@ -44,8 +44,8 @@ export const formatCurrency = (amount, currency = null, locale = "en-US") => {
 
   // Define currency symbols
   const currencySymbols = {
-    USD: "$",
-    EUR: "€",
+    USD: "USD ",
+    EUR: "EUR ",
     AED: "AED ",
   };
 

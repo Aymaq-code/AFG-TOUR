@@ -7,8 +7,8 @@ function ProgressBar({ index }) {
   ];
 
   return (
-    <div className="sticky top-0 z-20">
-      <div className="flex justify-between items-center bg-gray-100 rounded-full shadow-[0_0_2px_1px] shadow-black/20 p-2 mb-6">
+    <div className="sticky top-0">
+      <div className="flex justify-between items-center bg-gray-100 rounded-full p-2 mb-6">
         {steps.map((step, idx) => {
           const isActive = idx <= index;
           const isCurrent = idx === index;

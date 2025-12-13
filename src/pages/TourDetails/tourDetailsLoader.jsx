@@ -1,11 +1,6 @@
 import { getTourById } from "../../services/apiTour";
 
-/**
- * Loader function for tour details page
- * Fetches specific tour data by ID from URL parameters
- */
 export async function loader({ params }) {
-  // ✅ Export as 'loader'
   try {
     const tour = await getTourById(params.tourId);
 

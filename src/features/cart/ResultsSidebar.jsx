@@ -1,6 +1,6 @@
 import React from "react";
 import { useRegistrationStore } from "../../store/registrationStore";
-import { formatCurrency } from "../../utils/formatters";
+import { formatCurrency, formatPrice } from "../../utils/formatters";
 import ExtraServices from "./ExtraServices";
 
 export default function ResultsSidebar({ name }) {
@@ -10,20 +10,15 @@ export default function ResultsSidebar({ name }) {
   const childQuantity = useRegistrationStore((s) => s.childQuantity);
   const selectedHotel = useRegistrationStore((s) => s.selectedHotel);
   const selectedExtras = useRegistrationStore((s) => s.selectedServices);
-  const discount = useRegistrationStore((s) => s.discount);
-  const couponCode = useRegistrationStore((s) => s.couponCode);
+
   const startDate = useRegistrationStore((s) => s.startDate);
   const getTotal = useRegistrationStore((s) => s.getTotal);
-  const getSubtotal = useRegistrationStore((s) => s.getSubtotal);
 
-  const personsTotal =
-    adultUnitPrice * adultQuantity + childUnitPrice * childQuantity;
-  const hotelTotal = selectedHotel ? selectedHotel.price : 0;
   const extrasTotal = selectedExtras.reduce(
     (sum, extra) => sum + extra.price,
     0
   );
-  const subtotal = getSubtotal();
+
   const total = getTotal();
 
   return (
@@ -50,13 +45,13 @@ export default function ResultsSidebar({ name }) {
 
             <div className="flex justify-between">
               <span>Adults ({adultQuantity})</span>
-              <span>{formatCurrency(adultUnitPrice * adultQuantity)}</span>
+              <span>{formatPrice(adultUnitPrice * adultQuantity)}</span>
             </div>
 
             {childQuantity > 0 && (
               <div className="flex justify-between">
                 <span>Children ({childQuantity})</span>
-                <span>{formatCurrency(childUnitPrice * childQuantity)}</span>
+                <span>{formatPrice(childUnitPrice * childQuantity)}</span>
               </div>
             )}
 
@@ -75,7 +70,7 @@ export default function ResultsSidebar({ name }) {
 
             <div className="flex justify-between mb-1">
               <p>{selectedHotel.hotel}</p>
-              <p>{selectedHotel.price}.00</p>
+              <p>{formatPrice(selectedHotel.price)}</p>
             </div>
 
             <span>{formatCurrency(selectedHotel.price)}</span>
@@ -93,13 +88,13 @@ export default function ResultsSidebar({ name }) {
             {selectedExtras.map((service) => (
               <div key={service.id} className="flex justify-between mb-1">
                 <p className="text-sm">{service.title}</p>
-                <p className="text-sm">USD {service.price}.00</p>
+                <p className="text-sm">{formatPrice(service.price)}</p>
               </div>
             ))}
             <div className="border-t border-slate-600 pt-1 mt-2">
               <div className="flex justify-between font-semibold">
                 <p>Services Total:</p>
-                <p>{formatCurrency(extrasTotal)}</p>
+                <p>{formatPrice(extrasTotal)}</p>
               </div>
             </div>
           </div>
@@ -109,7 +104,7 @@ export default function ResultsSidebar({ name }) {
           <div className="bg-slate-700/50 rounded-lg px-4 py-2 mt-2">
             <p className="text-slate-400">Total Price</p>
             <p className="text-2xl font-bold text-cyan-400">
-              {formatCurrency(total)}
+              {formatPrice(total)}
             </p>
           </div>
         )}

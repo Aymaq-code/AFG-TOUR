@@ -9,10 +9,11 @@ export default function About() {
 
       <div
         id="about-section"
-        className=" min-h-screen flex flex-col lg:flex-row-reverse items-center justify-center gap-5 lg:gap-25 font-sans lg:mt-1 mt-20 py-8 lg:py-4 px-8 md:px-10 lg:px-20">
-        <div className=" border-blue-500 w-full text-stone-50 ">
-          <h1 className=" capitalize text-stone-700 text-2xl sm:text-3xl md:text-4xl leading-8 sm:leading-10 md:leading-[45px] font-semibold mb-4 sm:mb-6 tracking-[1px] sm:tracking-[2px] ">
-            Learn more about our <br />
+        className=" min-h-screen flex flex-col lg:flex-row-reverse items-center justify-center gap-5 lg:gap-25 font-sans lg:mt-1 md:mt-10  lg:py-4 px-8 md:px-10 lg:px-20">
+        <div className=" w-full text-stone-50 ">
+          <h1 className=" headTittle capitalize text-stone-700 text-2xl sm:text-3xl md:text-4xl leading-8 sm:leading-10 md:leading-[45px] font-semibold mb-4 sm:mb-6 tracking-[1px] sm:tracking-[2px] ">
+            Learn more about our
+            <br />
             <span className="bg-linear-to-r from-lime-200 to-lime-400 bg-clip-text text-transparent">
               missions
             </span>
@@ -22,7 +23,7 @@ export default function About() {
             </div>
           </h1>
 
-          <p className=" text-black/80 text-sm sm:text-base md:text-[17px] text-justify tracking-[1px] sm:tracking-[1.5px]">
+          <p className=" bodyParagraph text-black/80 text-sm sm:text-base md:text-[17px] text-justify tracking-[1px] sm:tracking-[1.5px]">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut atque
             dolores corporis reiciendis sed, porro, iusto molestiae vitae
             commodi iure mollitia fuga harum odit magni reprehenderit deleniti
